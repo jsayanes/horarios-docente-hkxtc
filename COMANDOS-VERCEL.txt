@@ -1,0 +1,14 @@
+
+# 🚀 COMANDOS AUTOMÁTICOS PARA VERCEL
+# Después de subir a GitHub:
+
+# Opción A: Desde la web (MÁS FÁCIL)
+echo "1. Ve a https://vercel.com"
+echo "2. Login with GitHub"
+echo "3. Import Project"
+echo "4. Selecciona tu repositorio: horarios-docente-hkxtc"
+echo "5. ¡Deploy automático!"
+
+# Opción B: Desde terminal (requiere npm install -g vercel)
+# npx vercel
+# npx vercel --prod

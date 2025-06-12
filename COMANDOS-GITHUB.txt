@@ -1,0 +1,15 @@
+# 🔥 COMANDOS PERSONALIZADOS PARA JSAYANES
+# Copia y pega estos comandos UNO POR UNO:
+
+# Paso 1: Crear repositorio en GitHub
+# Ve a: https://github.com/new?name=horarios-docente-hkxtc&description=Aplicacion%20de%20horarios%20con%20Angular%20y%20Node.js
+# Solo haz click en "Create repository"
+
+# Paso 2: Conectar con GitHub (YA PERSONALIZADO)
+git remote add origin https://github.com/jsayanes/horarios-docente-hkxtc.git
+
+# Paso 3: Subir código
+git branch -M main
+git push -u origin main
+
+# 🎉 ¡Tu código estará en: https://github.com/jsayanes/horarios-docente-hkxtc
