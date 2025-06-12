@@ -1,0 +1,386 @@
+// Variables de colores y medidas
+$border-color: #333;
+$border-width: 2px;
+$header-bg: #f8f9fa;
+$header-text: #2c3e50;
+$cell-padding: 8px;
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Container principal
+.horario-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: $shadow;
+}
+
+// Header con título y botón
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+
+  .titulo-section {
+    h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: $header-text;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+      margin: 5px 0 0 0;
+      font-size: 1rem;
+      color: #6c757d;
+      font-weight: 300;
+    }
+  }
+
+  .btn-reset {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, #c82333, #a71e2a);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Contenedor de la tabla
+.tabla-horarios {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: $shadow;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+
+    // Encabezado de la tabla
+    thead {
+      background: $header-bg;
+
+      th {
+        padding: $cell-padding 12px;
+        text-align: center;
+        font-weight: bold;
+        color: $header-text;
+        border: $border-width solid $border-color;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        &.horario-column {
+          width: 180px;
+          background: #e9ecef;
+        }
+
+        &.dia-column {
+          width: 140px;
+          min-width: 120px;
+        }
+      }
+    }
+
+    // Cuerpo de la tabla
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #fafafa;
+        }
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+      }
+
+      td {
+        border: $border-width solid $border-color;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+      }
+    }
+  }
+}
+
+// Celda de horario (primera columna)
+.horario-cell {
+  background: #e9ecef !important;
+  padding: $cell-padding !important;
+  width: 180px;
+
+  .horario-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+
+    .bloque-numero {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: $header-text;
+    }
+
+    .tiempo {
+      font-size: 0.85rem;
+      color: #495057;
+      font-weight: 500;
+    }
+  }
+}
+
+// Celdas de horario (días de la semana)
+.celda-horario {
+  width: 140px;
+  height: 60px;
+  padding: 0 !important;
+  position: relative;
+  transition: background-color 0.2s ease;
+
+  &.celda-vacia {
+    background: white;
+
+    &:hover {
+      background: #f8f9fa;
+    }
+  }
+
+  &.celda-ocupada {
+    padding: 4px !important;
+  }
+
+  // Efectos durante drag & drop
+  &.cdk-drop-list-dragging {
+    background: #fff3cd !important;
+    border: 2px dashed #ffc107 !important;
+  }
+
+  &.cdk-drop-list-receiving {
+    background: #d1ecf1 !important;
+    border: 2px dashed #17a2b8 !important;
+  }
+
+  // Zona de drop activa
+  &.cdk-drop-list-drag-over {
+    background: #e8f5e8 !important;
+    border: 2px dashed #28a745 !important;
+  }
+}
+
+// Item de clase arrastrable
+.clase-item {
+  width: 100%;
+  height: 52px;
+  border-radius: 4px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  &.cdk-drag-dragging {
+    cursor: grabbing;
+    opacity: 0.8;
+    transform: rotate(2deg);
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .clase-contenido {
+    .grado-seccion {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+// Preview durante drag
+.drag-preview {
+  .preview-item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: rotate(2deg);
+  }
+}
+
+// Placeholder durante drag
+.drop-placeholder {
+  width: 100%;
+  height: 52px;
+  border: 2px dashed #28a745;
+  border-radius: 4px;
+  background: rgba(40, 167, 69, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: "✓ Soltar aquí";
+    color: #28a745;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}
+
+// Footer con información
+.footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+
+  .info-text {
+    margin: 5px 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+
+    &:first-child {
+      color: #495057;
+      font-weight: 500;
+    }
+  }
+
+  .ultima-modificacion {
+    margin: 10px 0 0 0;
+    font-size: 0.8rem;
+    color: #adb5bd;
+    font-style: italic;
+  }
+}
+
+// Animaciones de feedback
+@keyframes errorShake {
+  0%, 20%, 40%, 60%, 80% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+}
+
+.error-movement {
+  animation: errorShake 0.5s ease-in-out;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .horario-container {
+    padding: 10px;
+
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+
+      .titulo-section {
+        text-align: center;
+
+        h1 {
+          font-size: 1.8rem;
+        }
+      }
+
+      .btn-reset {
+        align-self: center;
+      }
+    }
+
+    .tabla-horarios {
+      font-size: 0.85rem;
+
+      table {
+        th, td {
+          padding: 6px 4px;
+        }
+
+        .horario-cell {
+          width: 120px;
+
+          .horario-info {
+            .bloque-numero {
+              font-size: 1rem;
+            }
+
+            .tiempo {
+              font-size: 0.75rem;
+            }
+          }
+        }
+
+        .celda-horario {
+          width: 100px;
+          height: 50px;
+        }
+
+        .clase-item {
+          height: 42px;
+
+          .grado-seccion {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Estados especiales para accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Mejoras para contraste alto
+@media (prefers-contrast: high) {
+  .horario-container {
+    border: 3px solid #000;
+  }
+
+  table {
+    th, td {
+      border-color: #000 !important;
+      border-width: 2px !important;
+    }
+  }
+}
