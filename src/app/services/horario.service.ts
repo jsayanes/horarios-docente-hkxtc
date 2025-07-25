@@ -180,12 +180,13 @@ export class HorarioService {
       { dia: DiaSemana.MARTES, bloque: '8', clase: { id: 'martes-8', nombre: '9°3', grado: '9°', seccion: '3', color: COLORES_CLASES.DURAZNO } },
 
       // MIÉRCOLES
+      { dia: DiaSemana.MIERCOLES, bloque: '5', clase: { id: 'miercoles-5', nombre: '9°4', grado: '9°', seccion: '4', color: COLORES_CLASES.NARANJA } },
       { dia: DiaSemana.MIERCOLES, bloque: '6', clase: { id: 'miercoles-6', nombre: '9°3', grado: '9°', seccion: '3', color: COLORES_CLASES.DURAZNO } },
       { dia: DiaSemana.MIERCOLES, bloque: '7', clase: { id: 'miercoles-7', nombre: '8°2', grado: '8°', seccion: '2', color: COLORES_CLASES.ROJO } },
       { dia: DiaSemana.MIERCOLES, bloque: '8', clase: { id: 'miercoles-8', nombre: '9°3', grado: '9°', seccion: '3', color: COLORES_CLASES.DURAZNO } },
 
       // JUEVES
-      { dia: DiaSemana.JUEVES, bloque: '1', clase: { id: 'jueves-1', nombre: '9°4', grado: '9°', seccion: '4', color: COLORES_CLASES.NARANJA } },
+
       { dia: DiaSemana.JUEVES, bloque: '3', clase: { id: 'jueves-3', nombre: '8°3', grado: '8°', seccion: '3', color: COLORES_CLASES.VERDE } },
       { dia: DiaSemana.JUEVES, bloque: '4', clase: { id: 'jueves-4', nombre: '8°2', grado: '8°', seccion: '2', color: COLORES_CLASES.ROJO } },
       { dia: DiaSemana.JUEVES, bloque: '7', clase: { id: 'jueves-7', nombre: '9°2', grado: '9°', seccion: '2', color: COLORES_CLASES.AZUL } },
